@@ -22,14 +22,14 @@ Quite literally, when you watch them perform their craft, they make you drop you
 <summary>A JD Musician Profile</summary>
 <img alt="wireframe-3" src="https://i.imgur.com/OERtYlG.png">
 </details>
-<br>
+
 <details>
 <summary>Browse Musicians by Names</summary>
 <img alt="wireframe-1" src="https://i.imgur.com/ZU0nwLo.png">
 </details>
-<br>
+
 <details>
 <summary>Browse Musicians by Instruments</summary>
 <img alt="wireframe-2" src="https://i.imgur.com/vLCNI2W.png">
 </details>
-<br>
+

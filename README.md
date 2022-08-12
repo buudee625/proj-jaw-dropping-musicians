@@ -10,7 +10,7 @@ Quite literally, when you watch them perform their craft, they make you drop you
 
 <details>
 <summary>ERD</summary>
-<img alt="JDMB-ERD" src="https://i.imgur.com/N9wUtxL.png">
+<img alt="JDMB-ERD" src="https://i.imgur.com/IQoNbsu.png">
 </details>
 
 #

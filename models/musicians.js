@@ -4,10 +4,10 @@ const musiciansSchema = new mongoose.Schema({
   name: String,
   country: String,
   bio: String,
-  pfp: String,
-  instrument: String,
-  performance: Array,
-  comments: Array,
+  // pfp: String,
+  instrument: Array,
+  // performance: Array,
+  // comments: Array,
 });
 
 module.exports = mongoose.model("Musicians", musiciansSchema);

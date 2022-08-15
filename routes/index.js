@@ -8,6 +8,7 @@ router.get("/", function (req, res) {
   // in the student demo this was res.redirect('/movies'), what do you want?
   // This could be a landing page, or just redirect to your main resource page which you'll have an a tag that makes
   // a request to `/auth/google` route below
+  res.redirect("/jdmusicians");
 });
 
 // Google OAuth login route
@@ -20,8 +21,8 @@ router.get(
 router.get(
   "/oauth2callback",
   passport.authenticate("google", {
-    successRedirect: "/musicians", // UPDATE THIS, where do you want the client to go after you login
-    failureRedirect: "/musicians", //  UPDATE THIS, where do you want the client to go if login fails
+    successRedirect: "/jdmusicians", // UPDATE THIS, where do you want the client to go after you login
+    failureRedirect: "/jdmusicians", //  UPDATE THIS, where do you want the client to go if login fails
   })
 );
 
@@ -29,7 +30,7 @@ router.get(
 router.get("/logout", function (req, res) {
   req.logout(function () {
     //< - req.logout comes from passport, and what it does is destorys the cookie keeping track of the user!
-    res.redirect("/musicians"); // <---- UPDATE THIS TO WHERE YOU WANT THE USER TO GO AFTER LOGOUT
+    res.redirect("/jdmusicians"); // <---- UPDATE THIS TO WHERE YOU WANT THE USER TO GO AFTER LOGOUT
   });
 });
 

@@ -49,7 +49,7 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use("/", indexRoutes);
-app.use("/musicians", musiciansRouter);
+app.use("/jdmusicians", musiciansRouter);
 
 // invalid request, send 404 page
 app.use(function (req, res) {

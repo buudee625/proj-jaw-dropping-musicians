@@ -3,23 +3,35 @@
 <body>
   <p>ADD A NEW MUSICIAN</p>
   <form id="new-musician-form" action="/jdmusicians" method="POST">
-    Name:
+    <label for="name">Name:</label>
     <input name="name" type="text" value="Name" />
     <br />
-    Country:
+    <label for="country">Country:</label>
     <select name="country" id="country-select">
       <option value="US">US</option>
     </select>
+
     <br />
-    Bio:
+    <label for="bio">Bio:</label>
     <textarea name="bio" type="text" value="Bio" rows="4" cols="25"></textarea>
     <br />
-    Instruments:
+    <label for="instruments">Instruments:</label>
     <select name="instrument" id="inst-select" multiple>
       <%- instruments.map(inst=> `
       <option value="${inst._id}">${inst.name}</option>
       ` ).join('') %>
     </select>
+    <br />
+    <label for="url">Profile picture:</label>
+    <input
+      name="pfp"
+      type="url"
+      placeholder="https://example.com"
+      pattern="https://.*"
+      size="30"
+      required
+    />
+    <br />
     <br />
     <input type="submit" value="Add musician" />
   </form>

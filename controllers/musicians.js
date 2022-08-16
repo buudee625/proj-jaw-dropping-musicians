@@ -26,7 +26,6 @@ async function index(req, res) {
 async function newMusician(req, res) {
   try {
     const instDoc = await Instrument.find();
-    console.log(instDoc, '<- instDoc: ctrl/musicians/newMusician()');
     res.render('../views/musicians/new.ejs', {
       instruments: instDoc,
     });
@@ -48,8 +47,12 @@ function create(req, res) {
 
 async function show(req, res) {
   const musicianDoc = await Musicians.findById(req.params.id);
-  // console.log(req.params.id, '<- req.params.id: ctrl/musicians/show()');
+  const instDoc = await Instrument.find({ _id: musicianDoc.instrument });
+  console.log(req.params.id, '<- req.params.id: ctrl/musicians/show()');
+  console.log(instDoc, '<- instDoc: ctrl/music/show()');
+  console.log(musicianDoc, '<- musicianDoc.req.params.id: ctrl/music/show()');
   res.render('../views/musicians/show.ejs', {
     musicians: musicianDoc,
+    instruments: instDoc,
   });
 }

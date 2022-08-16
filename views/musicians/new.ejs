@@ -12,10 +12,14 @@
     </select>
     <br />
     Bio:
-    <input name="bio" type="text" value="Bio" />
+    <textarea name="bio" type="text" value="Bio" rows="4" cols="25"></textarea>
     <br />
     Instruments:
-    <input name="instruments" type="text" value="Instrument" />
+    <select name="instrumentId">
+      <%- instruments.map(inst=> `
+      <option value="${inst._id}">${inst.name}</option>
+      ` ).join('') %>
+    </select>
     <br />
     <input type="submit" value="Add musician" />
   </form>

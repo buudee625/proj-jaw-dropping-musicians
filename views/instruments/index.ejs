@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+<% instruments.forEach(i => { %>
+<ul>
+  <li><%= i.name %> - <%= i.type %></li>
+</ul>
+
+<% }) %>
+
+<form id="new-inst-form" action="/instruments" method="POST">
+  Instrument:
+  <input name="name" type="text" value="Name of the instrument" />
+  <br />
+  Type:
+  <select name="type" id="country-select">
+    <option value="string">String</option>
+    <option value="brass">Brass</option>
+    <option value="woodwind">Woodwind</option>
+    <option value="keys">Keys</option>
+    <option value="percussion">Percussion</option>
+    <option value="others">Others</option>
+  </select>
+  <input type="submit" value="Add a new instrumet" />
+</form>
+
+<%- include('../partials/footer') %>

@@ -10,6 +10,7 @@ const passport = require("passport");
 const methodOverride = require("method-override");
 const indexRoutes = require("./routes/index");
 const musiciansRouter = require("./routes/musicians");
+const instrumentRouter = require("./routes/instruments");
 // create the Express app
 const app = express();
 
@@ -50,10 +51,11 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use("/", indexRoutes);
 app.use("/jdmusicians", musiciansRouter);
+app.use("/", instrumentRouter);
 
 // invalid request, send 404 page
 app.use(function (req, res) {
-  res.status(404).send("Cant find that!");
+  res.status(404).send("404 Can't touch this!");
 });
 
 module.exports = app;

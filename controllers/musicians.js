@@ -9,10 +9,14 @@ module.exports = {
 
 async function index(req, res) {
   const musicianDoc = await Musicians.find();
-  res.render("../views/musicians/index.ejs", {
-    musicians: musicianDoc,
-    title: "Jaw Dropping Musicians",
-  });
+  try {
+    res.render("../views/musicians/index.ejs", {
+      musicians: musicianDoc,
+      title: "Jaw Dropping Musicians",
+    });
+  } catch (err) {
+    res.render(err);
+  }
 }
 
 function newMusician(req, res) {

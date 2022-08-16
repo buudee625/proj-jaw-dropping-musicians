@@ -3,7 +3,7 @@
 <h1><%= title %></h1>
 <% instruments.forEach(i => { %>
 <ul>
-  <li><%= i.name %> - <%= i.type %></li>
+  <li><a href="/instruments/<%= i._id %> "><%= i.name %></a></li>
 </ul>
 
 <% }) %>

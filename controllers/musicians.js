@@ -1,4 +1,4 @@
-const Musicians = require('../models/musicians');
+const Musician = require('../models/musicians');
 const Instrument = require('../models/instruments');
 
 module.exports = {
@@ -9,14 +9,14 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const musicianDoc = await Musicians.find();
+  const musicianDoc = await Musician.find();
   const instDoc = await Instrument.find();
   // console.log(instDoc, '<- instDoc: ctrl/musicians/index()');
   try {
     res.render('../views/musicians/index.ejs', {
       musicians: musicianDoc,
       instruments: instDoc,
-      title: 'Jaw Dropping Musicians',
+      title: 'Jaw Dropping Musician',
     });
   } catch (err) {
     return res.render(err);
@@ -35,7 +35,7 @@ async function newMusician(req, res) {
 }
 
 function create(req, res) {
-  Musicians.create(req.body, function (err, musicianDoc) {
+  Musician.create(req.body, function (err, musicianDoc) {
     if (err) {
       console.log(err, '<- err from controller/musicians/create()');
       return res.render('../views/musicians/new.ejs');
@@ -46,7 +46,7 @@ function create(req, res) {
 }
 
 async function show(req, res) {
-  const musicianDoc = await Musicians.findById(req.params.id);
+  const musicianDoc = await Musician.findById(req.params.id);
   const instDoc = await Instrument.find({ _id: musicianDoc.instrument });
   console.log(req.params.id, '<- req.params.id: ctrl/musicians/show()');
   console.log(instDoc, '<- instDoc: ctrl/music/show()');

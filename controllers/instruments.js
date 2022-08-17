@@ -19,7 +19,7 @@ async function index(req, res) {
       musicians: musicianDoc,
     });
   } catch (err) {
-    return res.render(err);
+    res.send(err);
   }
 }
 
@@ -31,23 +31,23 @@ function create(req, res) {
       return res.render('views/instruments/index.ejs');
     }
     console.log(instDoc, '<- instDoc: ctrl/inst/create()');
-    res.redirect('/jdmusicians');
+    res.redirect('/instruments');
   });
 }
 
 async function show(req, res) {
   try {
     // console.log(req.params.id, '<- req.params.id: ctrl/inst/show()');
+    const instDoc = await Instrument.findById(req.params.id);
     const musicianDoc = await Musician.find({
       instrument: { _id: req.params.id },
     });
-    console.log(musicianDoc, '<- musicianDoc: ctrl/inst/show()');
-
-    // console.log(instDoc, '<- instDoc: ctrl/inst/show()');
+    // console.log(musicianDoc, '<- musicianDoc: ctrl/inst/show()');
     res.render('../views/instruments/show.ejs', {
+      instruments: instDoc,
       musicians: musicianDoc,
     });
   } catch (err) {
-    return res.render(err);
+    res.send(err);
   }
 }

@@ -19,7 +19,7 @@ async function index(req, res) {
       title: 'Jaw Dropping Musician',
     });
   } catch (err) {
-    return res.render(err);
+    res.send(err);
   }
 }
 
@@ -30,29 +30,33 @@ async function newMusician(req, res) {
       instruments: instDoc,
     });
   } catch (err) {
-    return res.render(err);
+    res.send(err);
   }
 }
 
 function create(req, res) {
   Musician.create(req.body, function (err, musicianDoc) {
     if (err) {
-      console.log(err, '<- err from controller/musicians/create()');
+      console.log(err, '<- err: controller/musicians/create()');
       return res.render('../views/musicians/new.ejs');
     }
-    console.log(musicianDoc, '<- musicianDoc from create()');
+    // console.log(musicianDoc, '<- musicianDoc: ctrl/music/create()');
     res.redirect('/jdmusicians');
   });
 }
 
 async function show(req, res) {
-  const musicianDoc = await Musician.findById(req.params.id);
-  const instDoc = await Instrument.find({ _id: musicianDoc.instrument });
-  console.log(req.params.id, '<- req.params.id: ctrl/musicians/show()');
-  console.log(instDoc, '<- instDoc: ctrl/music/show()');
-  console.log(musicianDoc, '<- musicianDoc.req.params.id: ctrl/music/show()');
-  res.render('../views/musicians/show.ejs', {
-    musicians: musicianDoc,
-    instruments: instDoc,
-  });
+  try {
+    const musicianDoc = await Musician.findById(req.params.id);
+    const instDoc = await Instrument.find({ _id: musicianDoc.instrument });
+    // console.log(req.params.id, '<- req.params.id: ctrl/musicians/show()');
+    // console.log(instDoc, '<- instDoc: ctrl/music/show()');
+    // console.log(musicianDoc, '<- musicianDoc.req.params.id: ctrl/music/show()');
+    res.render('../views/musicians/show.ejs', {
+      musicians: musicianDoc,
+      instruments: instDoc,
+    });
+  } catch (err) {
+    res.send(err);
+  }
 }

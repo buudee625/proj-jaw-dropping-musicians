@@ -13,6 +13,67 @@
   <p><% instruments.forEach(inst => { %> <%= inst.name %> <% }) %></p>
   <p><%= musicians.bio %></p>
 </div>
+<div>
+  <% if (musicians.comment.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% musicians.comment.forEach(elem => { %>
+      <tr>
+        <td class="comment-user">
+          <img
+            alt="avatar"
+            src="<%= elem.userAvatar %>"
+            referrerpolicy="no-referrer"
+          />
+          <%= elem.userName %>
+        </td>
+        <td><%= elem.content %></td>
+        <td>
+          <% if (user?._id.equals(elem.user)) { %>
+          <form action="" method="POST">
+            <input type="submit" value="x" />
+          </form>
+          <% } %>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <% } else { %>
+  <div>Tell us how this musician made you drop your jaw!</div>
+  <% } %>
+</div>
+<div>
+  <% if (user) { %>
+  <br />
+  <br />
+  <h2>Comments</h2>
+  <form
+    id="comment-form"
+    action="/jdmusicians/<%= musicians._id %>/comments"
+    method="POST"
+  >
+    <textarea
+      name="content"
+      type="text"
+      value="Bio"
+      rows="4"
+      cols="25"
+      maxlength="500"
+    ></textarea>
+    <input type="submit" value="Add a comment" />
+  </form>
+  <% } %>
+</div>
+<br />
 <br />
 <a href="/jdmusicians">GO BACK</a>
 <br />

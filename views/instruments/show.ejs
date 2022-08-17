@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>ROuted bOss</h1>
-    <% musicians.forEach(elem => { %>
-    <li><%= elem.name %></li>
-    <% }) %>
-    <a href="/instruments">GO BACK</a>
-  </body>
-</html>
+<%- include('../partials/header') %>
+
+<body>
+  <h1><%= instruments.name %></h1>
+  <h3>Jaw Dropping Musicians who play this instrument:</h3>
+  <% if (musicians.length == 0) { %>
+  <div>No Jaw Dropping Musician has been added yet!</div>
+  <% } %> <% musicians.forEach(elem => { %>
+  <li><a href="/jdmusicians/<%= elem._id %> "><%= elem.name %></a></li>
+  <% }) %>
+  <br />
+  <br />
+  <a href="/instruments">GO BACK</a>
+</body>
+
+<%- include('../partials/footer') %>

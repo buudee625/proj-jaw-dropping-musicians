@@ -34,10 +34,11 @@
           />
           <%= elem.userName %>
         </td>
+        <td><%= elem.createdAt.toLocaleDateString() %></td>
         <td><%= elem.content %></td>
         <td>
           <% if (user?._id.equals(elem.user)) { %>
-          <form action="" method="POST">
+          <form action="/comments/<%= elem._id %>?_method=DELETE" method="POST">
             <input type="submit" value="x" />
           </form>
           <% } %>

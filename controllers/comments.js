@@ -22,4 +22,19 @@ async function create(req, res) {
   }
 }
 
-function deleteComm(req, res) {}
+async function deleteComm(req, res) {
+  try {
+    const musicianDoc = await Musician.findOne({
+      'comment._id': req.params.id,
+      'comment.user': req.user._id,
+    });
+    console.log(req.params.id, '<- req.params.id: deleteComm');
+    console.log(musicianDoc, '<- musicianDoc: deleteComm');
+    if (!musicianDoc) return res.redirect('/jdmusicians');
+    musicianDoc.comment.remove(req.params.id);
+    await musicianDoc.save();
+    res.redirect(`/jdmusicians/`);
+  } catch (err) {
+    res.send(err);
+  }
+}

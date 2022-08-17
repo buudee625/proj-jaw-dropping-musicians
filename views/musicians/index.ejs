@@ -2,14 +2,21 @@
 
   <body>
     <h1><%= title %></h1>
-    <% musicians.forEach(m => { %>
-      <ul>
-        <li>
-          <a href="/jdmusicians/<%= m._id %> "><%= m.name %></a><br> 
-          <%= m.country %> <br>
-        </li>
-      </ul>
+    <% musicians.forEach(elem => { %>
+      <div class="card" style="width: 18rem;">
+        <% if (elem.pfp) { %>
+          <img src="<%= elem.pfp %>" class="card-img-top" alt="musician's profile picture">
+        <% } else { %>
+        <img src="#" class="card-img-top" alt="musician's profile picture">
+        <% } %>
+        <div class="card-body">
+          <h5 class="card-title"><%= elem.name %></h5>
+          <p class="card-text"><%= elem.country %></p>
+          <a href="/jdmusicians/<%= elem._id %>" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
     <% }) %>
+    
   </body>
 </html>
 

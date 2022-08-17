@@ -34,26 +34,11 @@ async function newMusician(req, res) {
   }
 }
 
-// function create(req, res) {
-//   Musician.create(req.body, function (err, musicianDoc) {
-//     if (err) {
-//       console.log(err, '<- err: controller/musicians/create()');
-//       return res.render('../views/musicians/new.ejs');
-//     }
-//     // convert country code to name
-//     const countryName = new Intl.DisplayNames(['en'], { type: 'region' });
-//     musicianDoc.country = countryName.of(musicianDoc.country);
-//     // console.log(musicianDoc, '<- musicianDoc: ctrl/music/create()');
-//     res.redirect('/jdmusicians');
-//   });
-// }
-
 async function create(req, res) {
   try {
     // converts country code to country name
-    const countryName = new Intl.DisplayNames(['en'], { type: 'region' });
-    req.body.country = countryName.of(req.body.country);
-
+    // const countryName = new Intl.DisplayNames(['en'], { type: 'region' });
+    // req.body.country = countryName.of(req.body.country);
     const musicianDoc = await Musician.create(req.body);
     res.redirect('/jdmusicians');
   } catch (err) {

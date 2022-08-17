@@ -1,15 +1,33 @@
 <%- include('../partials/header') %>
+<script
+  src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"
+  defer
+></script>
+<script
+  src="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"
+  defer
+></script>
+<script
+  src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"
+  defer
+></script>
 
 <body>
   <p>ADD A NEW MUSICIAN</p>
   <form id="new-musician-form" action="/jdmusicians" method="POST">
     <label for="name">Name:</label>
-    <input name="name" type="text" value="Name" />
+    <input name="name" type="text" placeholder="Name" />
     <br />
     <label for="country">Country:</label>
-    <select name="country" id="country-select">
-      <option value="US">US</option>
-    </select>
+    <!-- test -->
+
+    <select
+      name="country"
+      class="selectpicker countrypicker"
+      data-flag="true"
+      data-live-search="true"
+      data-default="US"
+    ></select>
 
     <br />
     <label for="bio">Bio:</label>
@@ -20,6 +38,7 @@
       rows="4"
       cols="25"
       maxlength="750"
+      placeholder="Max 750 characters"
     ></textarea>
     <br />
     <label for="instruments">Instruments:</label>

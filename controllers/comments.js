@@ -28,12 +28,13 @@ async function deleteComm(req, res) {
       'comment._id': req.params.id,
       'comment.user': req.user._id,
     });
-    console.log(req.params.id, '<- req.params.id: deleteComm');
-    console.log(musicianDoc, '<- musicianDoc: deleteComm');
+    // console.log(req.params.id, '<- req.params.id: deleteComm');
+    // console.log(musicianDoc, '<- musicianDoc: deleteComm');
+
     if (!musicianDoc) return res.redirect('/jdmusicians');
     musicianDoc.comment.remove(req.params.id);
     await musicianDoc.save();
-    res.redirect(`/jdmusicians/`);
+    res.redirect(`/jdmusicians/${musicianDoc._id}`);
   } catch (err) {
     res.send(err);
   }

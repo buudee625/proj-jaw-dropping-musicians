@@ -1,28 +1,28 @@
 <%- include('../partials/header') %>
 
-<h1><%= title %></h1>
-<% instruments.forEach(i => { %>
-<ul>
-  <li><a href="/instruments/<%= i._id %> "><%= i.name %></a></li>
-</ul>
+<body class="bg-dark text-light">
+  <% instruments.forEach(i => { %>
+  <ul>
+    <li><a href="/instruments/<%= i._id %> "><%= i.name %></a></li>
+  </ul>
 
-<% }) %>
+  <% }) %>
 
-<form id="new-inst-form" action="/instruments" method="POST">
-  Instrument:
-  <input name="name" type="text" placeholder="Instrument name" />
-  <br />
-  Type:
-  <select name="type" id="country-select">
-    <option value="vocal">Vocal/Voice</option>
-    <option value="string">String</option>
-    <option value="brass">Brass</option>
-    <option value="woodwind">Woodwind</option>
-    <option value="keys">Keys</option>
-    <option value="percussion">Percussion</option>
-    <option value="others">Others</option>
-  </select>
-  <input type="submit" value="Add a new instrumet" />
-</form>
-
+  <form id="new-inst-form" action="/instruments" method="POST">
+    Instrument:
+    <input name="name" type="text" placeholder="Instrument name" />
+    <br />
+    Type:
+    <select name="type" id="country-select">
+      <option value="vocal">Vocal/Voice</option>
+      <option value="string">String</option>
+      <option value="brass">Brass</option>
+      <option value="woodwind">Woodwind</option>
+      <option value="keys">Keys</option>
+      <option value="percussion">Percussion</option>
+      <option value="others">Others</option>
+    </select>
+    <input type="submit" value="Add a new instrumet" />
+  </form>
+</body>
 <%- include('../partials/footer') %>

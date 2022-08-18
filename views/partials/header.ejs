@@ -20,9 +20,9 @@
     ></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">JD Musicians</a>
+        <a class="navbar-brand text-light" href="#">JD Musicians</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,7 +38,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link active text-light"
                 aria-current="page"
                 href="/jdmusicians"
               >
@@ -46,22 +46,23 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/instruments" class="nav-link">Instruments</a>
+              <a href="/instruments" class="nav-link text-light">Instruments</a>
             </li>
             <% if (user) { %>
-              <li class="nav-item">
-                <a href="/jdmusicians/new" class="nav-link">Add A JDMusician</a>
-              </li>
-              <% } %>
-          </ul>    
-            <% if (user) { %>
-                <a href="/logout" class="btn btn-outline-danger">Logout</a>
-              <% } else { %>
-                <a href="/auth/google" class="btn btn-outline-warning" type="submit">
-                  Login
-                </a>
-              <% } %>
-          </form>
+            <li class="nav-item">
+              <a href="/jdmusicians/new" class="nav-link text-light">
+                Add A JDMusician
+              </a>
+            </li>
+            <% } %>
+          </ul>
+          <% if (user) { %>
+          <a href="/logout" class="btn btn-outline-danger">Logout</a>
+          <% } else { %>
+          <a href="/auth/google" class="btn btn-outline-warning" type="submit">
+            Login
+          </a>
+          <% } %>
         </div>
       </div>
     </nav>

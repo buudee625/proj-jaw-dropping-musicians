@@ -1,22 +1,26 @@
 <%- include('../partials/header') %>
 
-  <body>
-    <h1><%= title %></h1>
+  <body class="bg-dark">
+    <div class="container d-flex flex-wrap gap-4">
     <% musicians.forEach(elem => { %>
-      <div class="card" style="width: 18rem;">
-        <% if (elem.pfp) { %>
-          <img src="<%= elem.pfp %>" class="card-img-top" alt="musician's profile picture">
-        <% } else { %>
-        <img src="#" class="card-img-top" alt="musician's profile picture">
-        <% } %>
-        <div class="card-body">
-          <h5 class="card-title"><%= elem.name %></h5>
-          <p class="card-text"><%= elem.country %></p>
-          <a href="/jdmusicians/<%= elem._id %>" class="btn btn-primary">Learn More</a>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card" style="width: 18rem;">
+            <% if (elem.pfp) { %>
+              <img src="<%= elem.pfp %>" class="card-img-top h-50" alt="musician's profile picture">
+            <% } else { %>
+            <img src="#" class="card-img-top " alt="musician's profile picture">
+            <% } %>
+            <div class="card-body">
+              <h5 class="card-title"><%= elem.name %></h5>
+              <p class="card-text"><%= elem.country %></p>
+              <a href="/jdmusicians/<%= elem._id %>" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
         </div>
       </div>
     <% }) %>
-    
+    </div>
   </body>
 </html>
 

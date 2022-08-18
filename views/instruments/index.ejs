@@ -6,8 +6,7 @@
     <li><a href="/instruments/<%= i._id %> "><%= i.name %></a></li>
   </ul>
 
-  <% }) %>
-
+  <% }) %> <% if (user) { %>
   <form id="new-inst-form" action="/instruments" method="POST">
     Instrument:
     <input name="name" type="text" placeholder="Instrument name" />
@@ -25,4 +24,6 @@
     <input type="submit" value="Add a new instrumet" />
   </form>
 </body>
-<%- include('../partials/footer') %>
+<% } else {%>
+<div>Sign in to create new instrument</div>
+<% } %> <%- include('../partials/footer') %>

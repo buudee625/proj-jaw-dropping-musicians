@@ -1,83 +1,123 @@
 <%- include('../partials/header') %>
+<body class="bg-dark text-light">
+  <div class="container">
+    <div class="col-md-8 offset-md-2">
+      <div class="col-md-10"><h1><%= musicians.name %></h1></div>
+      <div>
+        <% if (musicians.pfp) { %>
+        <img
+          class="rounded mx-auto d-block"
+          src="<%= musicians.pfp %>"
+          alt="profile picture"
+        />
+        <% } else { %>
+        <p><small>No pic? :(</small></p>
+        <% } %>
+      </div>
+      <br />
+      <div>
+        <p><%= musicians.country %></p>
+        <p><% instruments.forEach(inst => { %> <%= inst.name %> <% }) %></p>
+        <p><%= musicians.bio %></p>
+      </div>
+      <div>
+        <table class="table table-striped text-light">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Date</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <% if (musicians.comment.length) { %>
+          <tbody class="table table-striped text-light">
+            <% musicians.comment.forEach(elem => { %>
+            <tr>
+              <td class="comment-user">
+                <img
+                  alt="avatar"
+                  src="<%= elem.userAvatar %>"
+                  referrerpolicy="no-referrer"
+                  style="border-radius: 50%;
+                  max-width: 50px;
+                  max-height: 50px;"
+                  />
+                <%= elem.userName %>
+              </td>
+              <td><%= elem.createdAt.toLocaleDateString() %></td>
+              <td><%= elem.content %></td>
+              <td>
+                <% if (user?._id.equals(elem.user)) { %>
+                <form
+                  action="/comments/<%= elem._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <input type="submit" value="x" style=""/>
+                </form>
+                <% } %>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
 
-<h1><%= musicians.name %></h1>
-<br />
-<% if (musicians.pfp) { %>
-<img src="<%= musicians.pfp %>" alt="profile picture" />
-<% } else { %>
-<p><small>No pic? :(</small></p>
-<% } %>
-<br />
-<div>
-  <!-- using converting country code to country name in Eng -->
-  <p><%= musicians.country %></p>
-  <p><% instruments.forEach(inst => { %> <%= inst.name %> <% }) %></p>
-  <p><%= musicians.bio %></p>
-</div>
-<div>
-  <% if (musicians.comment.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Date</th>
-        <th>Comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% musicians.comment.forEach(elem => { %>
-      <tr>
-        <td class="comment-user">
-          <img
-            alt="avatar"
-            src="<%= elem.userAvatar %>"
-            referrerpolicy="no-referrer"
-          />
-          <%= elem.userName %>
-        </td>
-        <td><%= elem.createdAt.toLocaleDateString() %></td>
-        <td><%= elem.content %></td>
-        <td>
-          <% if (user?._id.equals(elem.user)) { %>
-          <form action="/comments/<%= elem._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="x" />
-          </form>
+          <% } else { %>
+          </table>
+          <div>Tell us how this musician made you drop your jaw!</div>
           <% } %>
-        </td>
-      </tr>
-      <% }) %>
-    </tbody>
-  </table>
-
-  <% } else { %>
-  <div>Tell us how this musician made you drop your jaw!</div>
-  <% } %>
-</div>
-<div>
-  <% if (user) { %>
-  <br />
-  <br />
-  <h2>Comments</h2>
-  <form
-    id="comment-form"
-    action="/jdmusicians/<%= musicians._id %>/comments"
-    method="POST"
-  >
-    <textarea
-      name="content"
-      type="text"
-      value="Bio"
-      rows="4"
-      cols="25"
-      maxlength="500"
-    ></textarea>
-    <input type="submit" value="Add a comment" />
-  </form>
-  <% } %>
-</div>
-<br />
-<br />
-<a href="/jdmusicians">GO BACK</a>
-<br />
-
+        </table>
+      </div>
+      <div>
+        <% if (user) { %>
+        <br />
+        <br />
+        <h2>Comments</h2>
+        <form
+          id="comment-form"
+          action="/jdmusicians/<%= musicians._id %>/comments"
+          method="POST"
+        >
+          <textarea
+            name="content"
+            type="text"
+            value="Bio"
+            rows="4"
+            cols="25"
+            maxlength="500"
+          ></textarea>
+          <br />
+          <input class="btn btn-primary" type="submit" value="Add a comment" />
+        </form>
+        <% } %>
+      </div>
+      <br />
+      <br />
+    <div class="">
+      <a class="btn btn-outline-primary" href="/jdmusicians">GO BACK</a>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        DELETE MUSICIAN
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>  
+      <br />
+    </div>
+  </div>
+</body>
 <%- include('../partials/footer') %>

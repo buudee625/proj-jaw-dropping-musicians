@@ -1,9 +1,21 @@
 <%- include('../partials/header') %>
 <body class="bg-dark text-light">
+  <br />
+  <br />
   <div class="container">
     <div class="col-md-8 offset-md-2">
-      <div class="col-md-10"><h1><%= musicians.name %></h1></div>
-      <div>
+      <!-- || ================================ || -->
+      <!-- || name -->
+      <!-- || ================================ || -->
+      <div
+        class="col-md-10 offset-md-1 h2 pb-2 mb-4 text-light border-bottom border-light d-flex justify-content-center"
+      >
+        <%= musicians.name %>
+      </div>
+      <!-- || ================================ || -->
+      <!-- || pfp -->
+      <!-- || ================================ || -->
+      <div class="col-md-10 offset-md-1 d-flex justify-content-center">
         <% if (musicians.pfp) { %>
         <img
           class="rounded mx-auto d-block"
@@ -15,13 +27,19 @@
         <% } %>
       </div>
       <br />
-      <div>
+      <!-- || ================================ || -->
+      <!-- || country, instrument, bio -->
+      <!-- || ================================ || -->
+      <div class="col-md-10 offset-md-1">
         <p><%= musicians.country %></p>
         <p><% instruments.forEach(inst => { %> <%= inst.name %> <% }) %></p>
         <p><%= musicians.bio %></p>
       </div>
-      <div>
-        <table class="table table-striped text-light">
+      <!-- || ================================ || -->
+      <!-- || comments table-->
+      <!-- || ================================ || -->
+      <div class="col-md-10 offset-md-1 d-flex justify-content-center">
+        <table class="table text-light">
           <thead>
             <tr>
               <th>User</th>
@@ -29,8 +47,9 @@
               <th>Comment</th>
             </tr>
           </thead>
-          <% if (musicians.comment.length) { %>
-          <tbody class="table table-striped text-light">
+          <tbody class="table text-light">
+            <% if (musicians.comment.length) { %>
+            <!-- EJS break -->
             <% musicians.comment.forEach(elem => { %>
             <tr>
               <td class="comment-user">
@@ -38,10 +57,8 @@
                   alt="avatar"
                   src="<%= elem.userAvatar %>"
                   referrerpolicy="no-referrer"
-                  style="border-radius: 50%;
-                  max-width: 50px;
-                  max-height: 50px;"
-                  />
+                  style="border-radius: 50%; max-width: 50px; max-height: 50px"
+                />
                 <%= elem.userName %>
               </td>
               <td><%= elem.createdAt.toLocaleDateString() %></td>
@@ -52,25 +69,27 @@
                   action="/comments/<%= elem._id %>?_method=DELETE"
                   method="POST"
                 >
-                  <input type="submit" value="x" style=""/>
+                  <input type="submit" value="x" />
                 </form>
                 <% } %>
               </td>
             </tr>
-            <% }) %>
+            <% }) %> <% } %>
           </tbody>
-
-          <% } else { %>
-          </table>
-          <div>Tell us how this musician made you drop your jaw!</div>
-          <% } %>
         </table>
       </div>
-      <div>
+      <% if (!musicians.comment.length) { %>
+      <small class="col-md-10 offset-md-1 d-flex justify-content-center">
+        Tell us how this musician made you drop your jaw!
+      </small>
+      <% } %>
+      <br />
+      <br />
+      <!-- || ================================ || -->
+      <!-- || comments submission -->
+      <!-- || ================================ || -->
+      <div class="d-flex justify-content-center form-floating">
         <% if (user) { %>
-        <br />
-        <br />
-        <h2>Comments</h2>
         <form
           id="comment-form"
           action="/jdmusicians/<%= musicians._id %>/comments"
@@ -81,41 +100,80 @@
             type="text"
             value="Bio"
             rows="4"
-            cols="25"
+            cols="40"
             maxlength="500"
+            class="form-control"
+            placeholder="Tell us how this musician made you drop your jaw!"
           ></textarea>
           <br />
           <input class="btn btn-primary" type="submit" value="Add a comment" />
         </form>
+
         <% } %>
       </div>
       <br />
       <br />
-    <div class="">
-      <a class="btn btn-outline-primary" href="/jdmusicians">GO BACK</a>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        DELETE MUSICIAN
-      </button>
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+      <!-- || ================================ || -->
+      <!-- || footer nav buttons -->
+      <!-- || ================================ || -->
+      <div class="d-flex justify-content-center col-md-10 offset-md-1">
+        <a class="btn btn-outline-primary mx-2" href="/jdmusicians">GO BACK</a>
+        <!-- Button trigger modal -->
+        <% if (user) { %>
+        <button
+          type="button"
+          class="btn btn-outline-danger mx-2"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          DELETE MUSICIAN
+        </button>
+        <% } %>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-dark">
+                <h5 class="modal-title text-light" id="exampleModalLabel">
+                  Delete A Musician
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body bg-secondary border-bottom-0">
+                Are you sure you want to delete this musician?
+              </div>
+              <div class="modal-footer bg-secondary border-top-0">
+                <button
+                  type="button"
+                  class="btn btn-outline-light"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <form
+                  action="/jdmusicians/<%= musicians._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button type="submit" class="btn btn-danger">
+                    DELETE THE MUSICIAN
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>  
       <br />
     </div>
   </div>

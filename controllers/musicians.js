@@ -6,6 +6,7 @@ module.exports = {
   newMusician,
   create,
   show,
+  deleteMusician,
 };
 
 async function index(req, res) {
@@ -59,5 +60,18 @@ async function show(req, res) {
     });
   } catch (err) {
     res.send(err);
+  }
+}
+
+async function deleteMusician(req, res) {
+  try {
+    const musicianToDel = await Musician.findById(req.params.id);
+    // console.log(musicianToDel, '<-musicianToDel: deleteMusician()');
+    res.redirect('/jdmusicians');
+    musicianToDel.remove(req.params.id);
+    await musicianToDel.save();
+  } catch (err) {
+    console.log(err, '<- err: controller/musicians/deleteMusician()');
+    return res.render('../views/musicians/show.ejs');
   }
 }

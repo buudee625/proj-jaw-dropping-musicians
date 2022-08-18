@@ -7,5 +7,6 @@ router.get('/', musiciansCtrl.index);
 router.get('/new', isLoggedIn, musiciansCtrl.newMusician);
 router.post('/', isLoggedIn, musiciansCtrl.create);
 router.get('/:id', musiciansCtrl.show);
+router.delete('/:id', isLoggedIn, musiciansCtrl.deleteMusician);
 
 module.exports = router;

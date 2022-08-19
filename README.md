@@ -84,7 +84,7 @@ Quite literally, when you watch them perform their craft, they make you drop you
 - A hall of fame highlighting the most upvoted or commented artist
 - An image carousel where users can upload images
 - A drag and drop image uploader
-- Implement different user roles so only admins can make edits to musicians, and regular users can only leave comments
+- A submission and review process so user's musician submissions can be reviewed
 - A drag and drop instrument list
 
 <br>

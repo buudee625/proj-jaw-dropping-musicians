@@ -12,6 +12,10 @@ const commentSchema = new mongoose.Schema(
   }
 );
 
+const videoSchema = new mongoose.Schema({
+  url: { type: String, required: true, unique: true },
+});
+
 const musicianSchema = new mongoose.Schema({
   name: { type: String, required: true },
   country: String,
@@ -19,7 +23,7 @@ const musicianSchema = new mongoose.Schema({
   pfp: String,
   instrument: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Instrument' }],
   comment: [commentSchema],
-  // performance: Array,
+  video: [videoSchema],
 });
 
 module.exports = mongoose.model('Musicians', musicianSchema);

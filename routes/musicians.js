@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const musiciansCtrl = require('../controllers/musicians');
+const musicianCtrl = require('../controllers/musicians');
 const isLoggedIn = require('../config/auth');
 
-router.get('/', musiciansCtrl.index);
-router.get('/new', isLoggedIn, musiciansCtrl.newMusician);
-router.post('/', isLoggedIn, musiciansCtrl.create);
-router.get('/:id', musiciansCtrl.show);
-router.delete('/:id', isLoggedIn, musiciansCtrl.deleteMusician);
+router.get('/', musicianCtrl.index);
+router.get('/new', isLoggedIn, musicianCtrl.newMusician);
+router.post('/', isLoggedIn, musicianCtrl.create);
+router.get('/:id', musicianCtrl.show);
+router.delete('/:id', isLoggedIn, musicianCtrl.deleteMusician);
 
 module.exports = router;

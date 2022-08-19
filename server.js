@@ -13,6 +13,7 @@ const indexRoutes = require('./routes/index');
 const musiciansRouter = require('./routes/musicians');
 const instrumentsRouter = require('./routes/instruments');
 const commentsRouter = require('./routes/comments');
+const videosRouter = require('./routes/videos');
 // create the Express app
 const app = express();
 
@@ -55,6 +56,7 @@ app.use('/', indexRoutes);
 app.use('/jdmusicians', musiciansRouter);
 app.use('/', instrumentsRouter);
 app.use('/', commentsRouter);
+app.use('/', videosRouter);
 
 // invalid request, send 404 page
 app.use(function (req, res) {

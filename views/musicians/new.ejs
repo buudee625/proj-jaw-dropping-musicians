@@ -5,11 +5,17 @@
   <br>
   <div class="container text-light">
     <div class="col-lg-4 offset-lg-4">
+      <!-- || ================================ || -->
+      <!-- || name -->
+      <!-- || ================================ || -->
       <div class="col-sm-10 mb-4">
         <form id="new-musician-form" action="/jdmusicians" method="POST">
           <label for="name">Name:</label>
           <input name="name" type="text" placeholder="Name" />
       </div>
+      <!-- || ================================ || -->
+      <!-- || country -->
+      <!-- || ================================ || -->
       <div class="col-sm-10 mb-4">
         <label for="country">Country:</label>
         <select
@@ -316,6 +322,9 @@
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
       </div>
+      <!-- || ================================ || -->
+      <!-- || bio -->
+      <!-- || ================================ || -->
       <div class="col-sm-10 mb-4">
         <label for="bio">Bio:</label>
         <textarea
@@ -328,6 +337,9 @@
           placeholder="Max 750 characters"
         ></textarea>
       </div>
+      <!-- || ================================ || -->
+      <!-- || instrument -->
+      <!-- || ================================ || -->
       <div class="col-sm-10 mb-4">
         <label for="instruments">Instruments:</label>
         <select name="instrument" id="inst-select" class="form-select" multiple required>
@@ -336,6 +348,9 @@
           ` ).join('') %>
         </select>
       </div>
+      <!-- || ================================ || -->
+      <!-- || pfp -->
+      <!-- || ================================ || -->
       <div class="col-sm-10 mb-4">
         <label for="url">Profile picture:</label>
         <input
@@ -346,6 +361,9 @@
           size="30"
         />
       </div>
+      <!-- || ================================ || -->
+      <!-- || footer buttons -->
+      <!-- || ================================ || -->
       <div class="col-sm-10 mb-4 d-flex justify-content-between">
         <button type="submit" class="btn btn-primary">Add Musician</button>
         <a href="/jdmusicians" class="btn btn-outline-danger">Go Back</a>

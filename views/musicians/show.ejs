@@ -28,15 +28,122 @@
       </div>
       <br />
       <!-- || ================================ || -->
-      <!-- || country, instrument, bio -->
+      <!-- || country, instrument -->
+      <!-- || ================================ || -->
+      <div class="col-md-10 offset-md-1 d-flex flex-column">
+        <div class=""><%= musicians.country %></div>
+        <div class="">
+          <% instruments.forEach(inst => { %> <%= inst.name %> <% }) %>
+        </div>
+      </div>
+      <br />
+      <!-- || ================================ || -->
+      <!-- || bio -->
+      <!-- || ================================ || -->
+      <div
+        class="col-md-10 offset-md-1 h4 pb-2 mb-4 text-light border-bottom border-light d-flex justify-content-center"
+      >
+        Bio:
+      </div>
+      <div class="col-md-10 offset-md-1"><%= musicians.bio %></div>
+      <br />
+      <br />
+      <!-- || ================================ || -->
+      <!-- || video carousel -->
+      <!-- || ================================ || -->
+      <div
+        class="col-md-10 offset-md-1 h4 pb-2 mb-4 text-light border-bottom border-light d-flex justify-content-center"
+      >
+        Video performances:
+      </div>
+      <div
+        id="carousel-vid"
+        class="carousel slide d-flex align-items-center"
+        data-bs-ride="false"
+        data-bs-interval="false"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <iframe
+              width="640"
+              height="390"
+              src="https://www.youtube.com/embed/NI_MsprREc0"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe
+              width="640"
+              height="390"
+              src="https://www.youtube.com/embed/1N4SX0rgCd4"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="carousel-item">
+            <iframe
+              width="640"
+              height="390"
+              src="https://www.youtube.com/embed/4C8YNZ0uzq8"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev my-auto"
+          type="button"
+          data-bs-target="#carousel-vid"
+          data-bs-slide="prev"
+          style="max-height: 50px; max-width: 50px"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next my-auto"
+          type="button"
+          data-bs-target="#carousel-vid"
+          data-bs-slide="next"
+          style="max-height: 50px; max-width: 50px"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="false"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <br />
+      <!-- || ================================ || -->
+      <!-- || add video -->
       <!-- || ================================ || -->
       <div class="col-md-10 offset-md-1">
-        <p><%= musicians.country %></p>
-        <p><% instruments.forEach(inst => { %> <%= inst.name %> <% }) %></p>
-        <p><%= musicians.bio %></p>
+        <div class="mb-3">
+          <form action="/jdmusicians/<%= musicians._id %>/videos" method="POST">
+            <label for="video-url" class="form-label">
+              Link a YouTube video:
+            </label>
+            <input
+              name="url"
+              type="url"
+              class="form-control"
+              pattern="https://.*"
+              id="video-url"
+              placeholder="https://youtube.com/"
+            />
+            <br />
+            <input class="btn btn-primary" type="submit" value="Add A Video" />
+          </form>
+        </div>
       </div>
+      <br />
       <!-- || ================================ || -->
-      <!-- || comments table-->
+      <!-- || comments table -->
       <!-- || ================================ || -->
       <div class="col-md-10 offset-md-1 d-flex justify-content-center">
         <table class="table text-light">
@@ -88,9 +195,10 @@
       <!-- || ================================ || -->
       <!-- || comments submission -->
       <!-- || ================================ || -->
-      <div class="d-flex justify-content-center form-floating">
+      <div class="form-floating">
         <% if (user) { %>
         <form
+          class="col-md-10 offset-md-1"
           id="comment-form"
           action="/jdmusicians/<%= musicians._id %>/comments"
           method="POST"

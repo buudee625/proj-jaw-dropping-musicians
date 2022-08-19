@@ -63,39 +63,19 @@
         data-bs-interval="false"
       >
         <div class="carousel-inner">
+          <% musicians.video.forEach(v => { %>
           <div class="carousel-item active">
             <iframe
               width="640"
               height="390"
-              src="https://www.youtube.com/embed/NI_MsprREc0"
+              src="https://www.youtube.com/embed/<%= v.url %> "
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
           </div>
-          <div class="carousel-item">
-            <iframe
-              width="640"
-              height="390"
-              src="https://www.youtube.com/embed/1N4SX0rgCd4"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="carousel-item">
-            <iframe
-              width="640"
-              height="390"
-              src="https://www.youtube.com/embed/4C8YNZ0uzq8"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+          <% }) %>
         </div>
         <button
           class="carousel-control-prev my-auto"

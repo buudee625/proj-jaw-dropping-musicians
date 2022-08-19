@@ -6,6 +6,8 @@ module.exports = {
   newMusician,
   create,
   show,
+  edit,
+  update,
   deleteMusician,
 };
 
@@ -65,13 +67,36 @@ async function show(req, res) {
 
 async function deleteMusician(req, res) {
   try {
+    res.redirect('/jdmusicians');
     const musicianToDel = await Musician.findById(req.params.id);
     // console.log(musicianToDel, '<-musicianToDel: deleteMusician()');
-    res.redirect('/jdmusicians');
     musicianToDel.remove(req.params.id);
     await musicianToDel.save();
   } catch (err) {
     console.log(err, '<- err: controller/musicians/deleteMusician()');
     return res.render('../views/musicians/show.ejs');
   }
+}
+
+async function edit(req, res) {
+  try {
+    const musicianDoc = await Musician.findById(req.params.id);
+    const instDoc = await Instrument.find();
+    res.render('../views/musicians/edit.ejs', {
+      instruments: instDoc,
+      musicians: musicianDoc,
+    });
+  } catch (err) {
+    res.send(err);
+  }
+}
+
+function update(req, res) {
+  Musician.findOneAndUpdate(
+    { _id: req.params.id },
+    req.body,
+    function (err, MusicianDoc) {
+      res.redirect(`/jdmusicians/${req.params.id}`);
+    }
+  );
 }

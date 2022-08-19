@@ -218,6 +218,12 @@
         <a class="btn btn-outline-primary mx-2" href="/jdmusicians">GO BACK</a>
         <!-- Button trigger modal -->
         <% if (user) { %>
+        <a
+          href="/jdmusicians/<%= musicians._id %>/edit "
+          class="btn btn-outline-primary"
+        >
+          EDIT
+        </a>
         <button
           type="button"
           class="btn btn-outline-danger mx-2"

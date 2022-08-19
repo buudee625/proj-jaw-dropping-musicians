@@ -6,9 +6,13 @@
     <% musicians.forEach(elem => { %>
       <div class="row">
         <div class="col-sm-4">
-          <div class="card shadow" style="width: 18rem;">
+          <div class="card shadow " style="width: 18rem;">
             <% if (elem.pfp) { %>
-              <img src="<%= elem.pfp %>" class="card-img-top h-50" alt="musician's profile picture">
+              <img 
+              src="<%= elem.pfp %>" 
+              class="card-img-top h-50" 
+              alt="musician's profile picture" 
+              >
             <% } else { %>
             <img src="#" class="card-img-top " alt="musician's profile picture">
             <% } %>

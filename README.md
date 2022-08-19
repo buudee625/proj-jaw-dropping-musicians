@@ -82,6 +82,7 @@ Quite literally, when you watch them perform their craft, they make you drop you
 ### Future Development
 
 - A alphabetical sorter of the musicians
+- The ability to edit a musician's info
 - A separate instrument dragdrop input where users can
 - An upvoting feature to show case an artist's jaw dropping factor
 - A hall of fame highlighting the most upvoted or commented artist

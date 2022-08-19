@@ -9,14 +9,29 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    const instDoc = await Instrument.find();
     const musicianDoc = await Musician.find();
+    const instDoc = await Instrument.find();
+    const vocalDoc = await Instrument.find({ type: 'vocal' });
+    const stringDoc = await Instrument.find({ type: 'string' });
+    const brassDoc = await Instrument.find({ type: 'brass' });
+    const woodwindDoc = await Instrument.find({ type: 'woodwind' });
+    const keyDoc = await Instrument.find({ type: 'keys' });
+    const percDoc = await Instrument.find({ type: 'percussion' });
+    const otherDoc = await Instrument.find({ type: 'others' });
+
     // console.log(instDoc, '<- instDoc: ctrl/inst/index()');
     // console.log(musicianDoc, '<- musicianDoc: ctrl/instr/index()');
     res.render('../views/instruments/index.ejs', {
       title: 'JD Instruments',
       instruments: instDoc,
       musicians: musicianDoc,
+      vocals: vocalDoc,
+      strings: stringDoc,
+      brass: brassDoc,
+      woodwinds: woodwindDoc,
+      keys: keyDoc,
+      percussions: percDoc,
+      others: otherDoc,
     });
   } catch (err) {
     res.send(err);

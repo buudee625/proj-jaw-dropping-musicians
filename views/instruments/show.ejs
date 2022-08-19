@@ -1,16 +1,37 @@
 <%- include('../partials/header') %>
 
-<body>
-  <h1><%= instruments.name %></h1>
-  <h3>Jaw Dropping Musicians who play this instrument:</h3>
-  <% if (musicians.length == 0) { %>
-  <div>No Jaw Dropping Musician has been added yet!</div>
-  <% } %> <% musicians.forEach(elem => { %>
-  <li><a href="/jdmusicians/<%= elem._id %> "><%= elem.name %></a></li>
-  <% }) %>
-  <br />
-  <br />
-  <a href="/instruments">GO BACK</a>
+<body class="container bg-dark text-light">
+  <div class="col-md-8 offset-md-2">
+    <br />
+    <br />
+    <h5 class="text-center">Musicians who play this instrument:</h5>
+    <br />
+    <div
+      class="col-md-10 offset-md-1 h2 pb-2 mb-4 text-light border-bottom border-light d-flex justify-content-center"
+    >
+      <%= instruments.name %>
+    </div>
+
+    <% if (musicians.length == 0) { %>
+    <div class="col-md-8 offset-md-2">
+      At some point someone who plays this instrument will drop your jaw!
+    </div>
+    <% } %> <% musicians.forEach(elem => { %>
+    <div class="col-md-8 offset-md-2">
+      <li><a href="/jdmusicians/<%= elem._id %> "><%= elem.name %></a></li>
+    </div>
+    <% }) %>
+    <br />
+    <br />
+    <a
+      class="btn btn-outline-primary col-md-10 offset-md-1"
+      href="/instruments"
+    >
+      GO BACK
+    </a>
+    <br />
+    <br />
+  </div>
 </body>
 
 <%- include('../partials/footer') %>

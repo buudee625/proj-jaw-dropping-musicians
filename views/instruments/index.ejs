@@ -1,29 +1,186 @@
 <%- include('../partials/header') %>
 
 <body class="bg-dark text-light">
-  <% instruments.forEach(i => { %>
-  <ul>
-    <li><a href="/instruments/<%= i._id %> "><%= i.name %></a></li>
-  </ul>
-
-  <% }) %> <% if (user) { %>
-  <form id="new-inst-form" action="/instruments" method="POST">
-    Instrument:
-    <input name="name" type="text" placeholder="Instrument name" />
-    <br />
-    Type:
-    <select name="type" id="country-select">
-      <option value="vocal">Vocal/Voice</option>
-      <option value="string">String</option>
-      <option value="brass">Brass</option>
-      <option value="woodwind">Woodwind</option>
-      <option value="keys">Keys</option>
-      <option value="percussion">Percussion</option>
-      <option value="others">Others</option>
-    </select>
-    <input type="submit" value="Add a new instrumet" />
-  </form>
+  <div class="container mt-5">
+    <!-- || ================================ || -->
+    <!-- || list of instruments -->
+    <!-- || ================================ || -->
+    <div class="row">
+      <div id="nav-vocal" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#vocal"
+          role="button"
+          aria-expanded="false"
+          aria-controls="vocal"
+        >
+          Vocal/Voice
+        </a>
+        <div class="collapse" id="vocal">
+          <div class="card card-body">
+            <% vocals.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <div id="nav-string" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#string"
+          role="button"
+          aria-expanded="false"
+          aria-controls="string"
+        >
+          String
+        </a>
+        <div class="collapse" id="string">
+          <div class="card card-body">
+            <% strings.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <div id="nav-keys" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#keys"
+          role="button"
+          aria-expanded="false"
+          aria-controls="keys"
+        >
+          Keyboard
+        </a>
+        <div class="collapse" id="keys">
+          <div class="card card-body">
+            <% keys.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <div id="nav-brass" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#brass"
+          role="button"
+          aria-expanded="false"
+          aria-controls="brass"
+        >
+          brass
+        </a>
+        <div class="collapse" id="brass">
+          <div class="card card-body">
+            <% brass.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <div id="nav-woodwind" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#woodwind"
+          role="button"
+          aria-expanded="false"
+          aria-controls="woodwind"
+        >
+          Woodwind
+        </a>
+        <div class="collapse" id="woodwind">
+          <div class="card card-body">
+            <% woodwinds.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <div id="nav-percussion" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#percussion"
+          role="button"
+          aria-expanded="false"
+          aria-controls="percussion"
+        >
+          Percussion
+        </a>
+        <div class="collapse" id="percussion">
+          <div class="card card-body">
+            <% percussions.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <div id="nav-others" class="col">
+        <a
+          class="btn btn-warning"
+          data-bs-toggle="collapse"
+          href="#others"
+          role="button"
+          aria-expanded="false"
+          aria-controls="others"
+        >
+          Others
+        </a>
+        <div class="collapse" id="others">
+          <div class="card card-body">
+            <% others.forEach(elem => { %>
+            <a href="/instruments/<%= elem._id %> " class="my-2"><%= elem.name %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- || ================================ || -->
+    <!-- || new instrument form -->
+    <!-- || ================================ || -->
+    <% if (user) { %>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form id="new-inst-form" action="/instruments" method="POST">
+          Instrument:
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            placeholder="Instrument name"
+          />
+          <br />
+      </div>
+      <div class="col-md-6 offset-md-3">
+          Type:
+          <select name="type" id="country-select" class="form-select">
+            <option value="vocal">Vocal/Voice</option>
+            <option value="string">String</option>
+            <option value="brass">Brass</option>
+            <option value="woodwind">Woodwind</option>
+            <option value="keys">Keys</option>
+            <option value="percussion">Percussion</option>
+            <option value="others">Others</option>
+          </select>
+          <br>
+          <input type="submit" class="btn btn-primary" value="Add a new instrumet" />
+        </form>
+        <br>
+        <br>
+       </div>
+    </div>
+    <% } else {%>
+    <div class="fw-light text-center">Sign in to create new instrument</div>
+    <br>
+    <br>
+    <% } %> <%- include('../partials/footer') %>
+  </div>
 </body>
-<% } else {%>
-<div>Sign in to create new instrument</div>
-<% } %> <%- include('../partials/footer') %>

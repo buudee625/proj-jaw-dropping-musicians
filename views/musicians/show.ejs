@@ -56,6 +56,7 @@
       >
         Video performances:
       </div>
+      <% if (musicians.video.length) { %>
       <div
         id="carousel-vid"
         class="carousel slide d-flex align-items-center"
@@ -98,6 +99,11 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+      <% } else { %>
+      <small class="d-flex justify-content-center">
+        Link a video to drop some jaws!
+      </small>
+      <% } %>
       <br />
       <!-- || ================================ || -->
       <!-- || add video -->
@@ -156,7 +162,11 @@
                   action="/comments/<%= elem._id %>?_method=DELETE"
                   method="POST"
                 >
-                  <input type="submit" value="x" />
+                  <button
+                    type="submit"
+                    class="btn-close btn-close-white"
+                    aria-label="Close"
+                  ></button>
                 </form>
                 <% } %>
               </td>
@@ -166,7 +176,7 @@
         </table>
       </div>
       <% if (!musicians.comment.length) { %>
-      <small class="col-md-10 offset-md-1 d-flex justify-content-center">
+      <small class="d-flex justify-content-center">
         Tell us how this musician made you drop your jaw!
       </small>
       <% } %>

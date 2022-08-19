@@ -10,8 +10,6 @@ Quite literally, when you watch them perform their craft, they make you drop you
 
 ## Planning
 
-#
-
 ### Kanban
 
 [Kanban board](https://trello.com/b/ggnuiDVX/jaw-dropping-musician)
@@ -39,8 +37,6 @@ Quite literally, when you watch them perform their craft, they make you drop you
 <br>
 
 ## Showcase
-
-#
 
 ### Screenshots
 

@@ -6,7 +6,7 @@ module.exports = {
   newMusician,
   create,
   show,
-  edit,
+  editMusician,
   update,
   deleteMusician,
 };
@@ -78,7 +78,7 @@ async function deleteMusician(req, res) {
   }
 }
 
-async function edit(req, res) {
+async function editMusician(req, res) {
   try {
     const musicianDoc = await Musician.findById(req.params.id);
     const instDoc = await Instrument.find();
@@ -92,11 +92,11 @@ async function edit(req, res) {
 }
 
 function update(req, res) {
-  Musician.findOneAndUpdate(
-    { _id: req.params.id },
-    req.body,
-    function (err, MusicianDoc) {
-      res.redirect(`/jdmusicians/${req.params.id}`);
+  Musician.findOneAndUpdate({ _id: req.params.id }, req.body, function (err) {
+    if (err) {
+      res.send(err);
+      console.log(err, '<--err: ctrl/musicians/update()');
     }
-  );
+    res.redirect(`/jdmusicians/${req.params.id}`);
+  });
 }

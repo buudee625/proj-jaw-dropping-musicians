@@ -1,5 +1,7 @@
 # Jaw Dropping Musicians
 
+## These musicians will bring your jaws to the floor!
+
 Jaw dropping musicians, aka JDMusician, is an open-source collection of musicians who are not well known in the general public sense but possess the most otherworldly talents.
 
 Quite literally, when you watch them perform their craft, they make you drop your jaw.
@@ -8,17 +10,13 @@ Quite literally, when you watch them perform their craft, they make you drop you
 
 <br>
 
-## Planning
+# Development 🛠
 
-### Kanban
+- [Kanban board](https://trello.com/b/ggnuiDVX/jaw-dropping-musician)
 
-[Kanban board](https://trello.com/b/ggnuiDVX/jaw-dropping-musician)
+- [ERD diagram](https://i.imgur.com/IQoNbsu.png)
 
-### ERD
-
-![ERD diagram](https://i.imgur.com/IQoNbsu.png)
-
-### Wireframes
+- ### Wireframes
 
 <details>
 <summary>A JD Musician Profile</summary>
@@ -36,9 +34,7 @@ Quite literally, when you watch them perform their craft, they make you drop you
 </details>
 <br>
 
-## Showcase
-
-### Screenshots
+# Screenshots 📷
 
 <details>
 <summary>Home page</summary>
@@ -57,10 +53,11 @@ Quite literally, when you watch them perform their craft, they make you drop you
 
 <br>
 
-### Technologies Used
+# Technologies 💿
 
 - JavaScript
 - HTML
+- CSS
 - Node.js
 - ExpressJS
 - JQuery
@@ -70,16 +67,13 @@ Quite literally, when you watch them perform their craft, they make you drop you
 - Passport
 - Google OAuth
 - YouTube IFrame Player API
-- Trello
-- Lucidchart
 
 <br>
 
-### Future Development
+# Future Development ⏳
 
-- A alphabetical sorter of the musicians
-- The ability to edit a musician's info
-- A separate instrument dragdrop input where users can
+- Search function to search musicians by name
+- A alphabetical sorter for the musicians database
 - An upvoting feature to show case an artist's jaw dropping factor
 - A hall of fame highlighting the most upvoted or commented artist
 - An image carousel where users can upload images
@@ -89,7 +83,7 @@ Quite literally, when you watch them perform their craft, they make you drop you
 
 <br>
 
-### Credit
+# Credit 👨‍👩‍👧‍👦
 
 - GA's amazing instructors
 - My beautiful partner Steph

@@ -1,6 +1,6 @@
 # Jaw Dropping Musicians
 
-## These musicians will bring your jaws to the floor!
+### These musicians will bring your jaws to the floor!
 
 Jaw dropping musicians, aka JDMusician, is an open-source collection of musicians who are not well known in the general public sense but possess the most otherworldly talents.
 

@@ -16,7 +16,7 @@ async function create(req, res) {
     req.body.userAvatar = req.user.avatar;
     musicianDoc.comment.push(req.body);
     await musicianDoc.save();
-    res.redirect(`/jdmusicians/${req.params.id}`);
+    res.redirect(`/musicians/${req.params.id}`);
   } catch (err) {
     res.send(err);
   }
@@ -31,10 +31,10 @@ async function deleteComm(req, res) {
     // console.log(req.params.id, '<- req.params.id: deleteComm');
     // console.log(musicianDoc, '<- musicianDoc: deleteComm');
 
-    if (!musicianDoc) return res.redirect('/jdmusicians');
+    if (!musicianDoc) return res.redirect('/musicians');
     musicianDoc.comment.remove(req.params.id);
     await musicianDoc.save();
-    res.redirect(`/jdmusicians/${musicianDoc._id}`);
+    res.redirect(`/musicians/${musicianDoc._id}`);
   } catch (err) {
     res.send(err);
   }

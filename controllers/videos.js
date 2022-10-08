@@ -21,7 +21,7 @@ async function create(req, res) {
     req.body.url = extractVideoId(req.body.url);
     musicianDoc.video.push(req.body);
     await musicianDoc.save();
-    res.redirect(`/jdmusicians/${req.params.id}`);
+    res.redirect(`/musicians/${req.params.id}`);
   } catch (err) {
     res.send(err);
   }

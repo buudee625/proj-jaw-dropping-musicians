@@ -110,7 +110,7 @@
       <!-- || ================================ || -->
       <div class="col-md-10 offset-md-1">
         <div class="mb-3">
-          <form action="/jdmusicians/<%= musicians._id %>/videos" method="POST">
+          <form action="/musicians/<%= musicians._id %>/videos" method="POST">
             <label for="video-url" class="form-label">
               Link a YouTube video:
             </label>
@@ -190,7 +190,7 @@
         <form
           class="col-md-10 offset-md-1"
           id="comment-form"
-          action="/jdmusicians/<%= musicians._id %>/comments"
+          action="/musicians/<%= musicians._id %>/comments"
           method="POST"
         >
           <textarea
@@ -215,11 +215,11 @@
       <!-- || footer nav buttons -->
       <!-- || ================================ || -->
       <div class="d-flex justify-content-center col-md-10 offset-md-1">
-        <a class="btn btn-outline-primary mx-2" href="/jdmusicians">GO BACK</a>
+        <a class="btn btn-outline-primary mx-2" href="/musicians">GO BACK</a>
         <!-- Button trigger modal -->
         <% if (user) { %>
         <a
-          href="/jdmusicians/<%= musicians._id %>/edit "
+          href="/musicians/<%= musicians._id %>/edit "
           class="btn btn-outline-primary"
         >
           EDIT
@@ -266,7 +266,7 @@
                   Close
                 </button>
                 <form
-                  action="/jdmusicians/<%= musicians._id %>?_method=DELETE"
+                  action="/musicians/<%= musicians._id %>?_method=DELETE"
                   method="POST"
                 >
                   <button type="submit" class="btn btn-danger">

@@ -39,11 +39,9 @@ async function newMusician(req, res) {
 
 async function create(req, res) {
   try {
-    // converts country code to country name
-    // const countryName = new Intl.DisplayNames(['en'], { type: 'region' });
-    // req.body.country = countryName.of(req.body.country);
+    // console.log(req.body, '<- req.body: create()/ctrl/musicians.js');
     const musicianDoc = await Musician.create(req.body);
-    res.redirect('/jdmusicians');
+    res.redirect('/musicians');
   } catch (err) {
     console.log(err, '<- err: controller/musicians/create()');
     return res.render('../views/musicians/new.ejs');
@@ -67,11 +65,8 @@ async function show(req, res) {
 
 async function deleteMusician(req, res) {
   try {
-    res.redirect('/jdmusicians');
-    const musicianToDel = await Musician.findById(req.params.id);
-    // console.log(musicianToDel, '<-musicianToDel: deleteMusician()');
-    musicianToDel.remove(req.params.id);
-    await musicianToDel.save();
+    await Musician.findByIdAndDelete(req.params.id);
+    res.redirect('/musicians');
   } catch (err) {
     console.log(err, '<- err: controller/musicians/deleteMusician()');
     return res.render('../views/musicians/show.ejs');
@@ -97,6 +92,6 @@ function update(req, res) {
       res.send(err);
       console.log(err, '<--err: ctrl/musicians/update()');
     }
-    res.redirect(`/jdmusicians/${req.params.id}`);
+    res.redirect(`/musicians/${req.params.id}`);
   });
 }

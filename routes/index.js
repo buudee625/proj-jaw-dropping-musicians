@@ -2,7 +2,13 @@ const router = require('express').Router();
 const passport = require('passport');
 const isLoggedIn = require('../config/auth');
 // The root route renders our only view
-router.get('/', function (req, res) {
+router.get('/jdmusicians', function (req, res) {
+  try {
+    res.render('../views/home/home.ejs');
+  } catch (err) {
+    console.log(err, '<--- err: router.get()/routes/index.js');
+  }
+
   //UPDATE THIS
   // Where do you want to go for the root route
   // in the student demo this was res.redirect('/movies'), what do you want?

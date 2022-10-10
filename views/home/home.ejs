@@ -1,5 +1,49 @@
 <%- include('../partials/header') %>
 
 <h1 class="title">This is the home page</h1>
+<input
+  class="form-control me-2"
+  type="search"
+  placeholder="Search"
+  aria-label="Search"
+  onkeyup="sendData(this)"
+/>
+
+<section id="q-results"></section>
+<script>
+  function sendData(e) {
+    const qResults = document.getElementById('q-results');
+    let match = e.value.match(/^[a-zA-Z]*/);
+    let match2 = e.value.match(/\s*/);
+    if (match2[0] === e.value) {
+      qResults.innerHTML = '';
+      return;
+    }
+    if (match[0] === e.value) {
+      fetch('musicians/search', {
+        method: 'POST',
+        headers: { 'content-Type': 'application/json' },
+        body: JSON.stringify({ payload: e.value }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          let payload = data.payload;
+          // console.log(data, '<- data:sendData()');
+          // console.log(payload, '<- payload:sendData()');
+          qResults.innerHTML = '';
+          if (payload.length < 1) {
+            qResults.innerHTML = "<p>Can't the musician? Add one!</p>";
+            return;
+          }
+          payload.forEach((item, index) => {
+            if (index > 0) qResults.innerHTML += '<hr />';
+            qResults.innerHTML += `<a href="/musicians/${item._id}">${item.name}</a>`;
+          });
+        });
+      return;
+    }
+    qResults.innerHTML = '';
+  }
+</script>
 
 <%- include('../partials/footer') %>

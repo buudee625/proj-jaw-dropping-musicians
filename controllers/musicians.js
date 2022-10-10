@@ -9,6 +9,7 @@ module.exports = {
   editMusician,
   update,
   deleteMusician,
+  search,
 };
 
 async function index(req, res) {
@@ -94,4 +95,17 @@ function update(req, res) {
     }
     res.redirect(`/musicians/${req.params.id}`);
   });
+}
+
+async function search(req, res) {
+  // remove any space in the front or end of the search input
+  let payload = req.body.payload.trim();
+  // use RegEx to do a non-case-sensitive query
+  let search = await Musician.find({
+    name: { $regex: new RegExp('^' + payload + '.*', 'i') },
+  }).exec();
+  // limit search result to 5
+  search = search.slice(0, 5);
+  res.send({ payload: search });
+  console.log(search, '<- search: search()/musicians.js/ctrler');
 }

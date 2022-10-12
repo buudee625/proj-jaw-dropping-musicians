@@ -1,49 +1,167 @@
-<%- include('../partials/header') %>
-
-<h1 class="title">This is the home page</h1>
-<input
-  class="form-control me-2"
-  type="search"
-  placeholder="Search"
-  aria-label="Search"
-  onkeyup="sendData(this)"
-/>
-
-<section id="q-results"></section>
-<script>
-  function sendData(e) {
-    const qResults = document.getElementById('q-results');
-    let match = e.value.match(/^[a-zA-Z]*/);
-    let match2 = e.value.match(/\s*/);
-    if (match2[0] === e.value) {
-      qResults.innerHTML = '';
-      return;
-    }
-    if (match[0] === e.value) {
-      fetch('musicians/search', {
-        method: 'POST',
-        headers: { 'content-Type': 'application/json' },
-        body: JSON.stringify({ payload: e.value }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          let payload = data.payload;
-          // console.log(data, '<- data:sendData()');
-          // console.log(payload, '<- payload:sendData()');
+<html>
+  <head>
+    <link rel="stylesheet" href="../../public/stylesheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      function sendData(e) {
+        const qResults = document.getElementById('q-results');
+        let match = e.value.match(/^[a-zA-Z]*/);
+        let match2 = e.value.match(/\s*/);
+        if (match2[0] === e.value) {
           qResults.innerHTML = '';
-          if (payload.length < 1) {
-            qResults.innerHTML = "<p>Can't the musician? Add one!</p>";
-            return;
-          }
-          payload.forEach((item, index) => {
-            if (index > 0) qResults.innerHTML += '<hr />';
-            qResults.innerHTML += `<a href="/musicians/${item._id}">${item.name}</a>`;
-          });
-        });
-      return;
-    }
-    qResults.innerHTML = '';
-  }
-</script>
+          return;
+        }
+        if (match[0] === e.value) {
+          fetch('musicians/search', {
+            method: 'POST',
+            headers: { 'content-Type': 'application/json' },
+            body: JSON.stringify({ payload: e.value }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              let payload = data.payload;
+              // console.log(data, '<- data:sendData()');
+              // console.log(payload, '<- payload:sendData()');
+              qResults.innerHTML = '';
+              if (payload.length < 1) {
+                qResults.innerHTML = "<p>Can't the musician? Add one!</p>";
+                return;
+              }
+              payload.forEach((item, index) => {
+                if (index > 0) qResults.innerHTML += '<hr />';
+                qResults.innerHTML += `<a href="/musicians/${item._id}">${item.name}</a>`;
+              });
+            });
+          return;
+        }
+        qResults.innerHTML = '';
+      }
+    </script>
+  </head>
+  <body>
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1 class="hero-headline">
+          JAW
+          <span class="hero-underline">DROPPING</span>
+          MUSICIANS
+        </h1>
+        <p class="tagline">
+          The Musician library that will bring your jaw to the floor.
+        </p>
+        <button id="login-button">LOGIN</button>
+      </div>
+    </div>
+    <div class="homepage-body">
+      <div class="discover-container">
+        <h2 class="instrument-heading">
+          SELECT AN
+          <span class="hero-underline">INSTRUMENT</span>
+        </h2>
+        <p>
+          To discover musicians. Log in to add new jaw dropping musicians to the
+          catalog.
+        </p>
+      </div>
+      <div class="instrument-selector">
+        <div class="instument-container">
+          <article class="flow">
+            <div class="instrument-grid">
+              <ul class="auto-grid" role="list">
+                <li>
+                  <a href="#" target="_blank" class="instrument">
+                    <!-- <h2 class="instrument__name">Vocal/Voice</h2> -->
+                    <img alt="microphone" src="/public/images/microphone.jpg" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" class="instrument">
+                    <!-- <h2 class="instrument__name">String</h2> -->
+                    <img
+                      alt="string instrument"
+                      src="/public/images/guitar.jpg"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" class="instrument">
+                    <!-- <h2 class="instrument__name">Keyboard</h2> -->
+                    <img
+                      alt="keyboard instrument"
+                      src="/public/images/keyboard.jpg"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" class="instrument">
+                    <!-- <h2 class="instrument__name">Woodwind</h2> -->
+                    <img
+                      alt="woodwind instrument"
+                      src="/public/images/saxophone.jpg"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" class="instrument">
+                    <!-- <h2 class="instrument__name">Brass</h2> -->
+                    <img
+                      alt="brass instrument"
+                      src="/public/images/trumpet.jpg"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" class="instrument">
+                    <!-- <h2 class="instrument__name">Percusion</h2> -->
+                    <img
+                      alt="percusion instrument"
+                      src="/public/images/drums.jpg"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="video-feature-container">
+        <div class="video-feature-text">
+          <p class="video-welcome">WELCOME TO JDM</p>
+          <h3>
+            GET YOUR DAILY DOSE OF
+            <span class="video-underline">MIND-BLOWING</span>
+            MUSIC TALENT. HAND-PICKED.
+          </h3>
+          <p id="video-blurb">
+            Upload and view videos of genre and technique defining players.
+            Build community enjoying masterful players shred their instruments.
+          </p>
+        </div>
+        <div>
+          <iframe
+            class="video"
+            width="640"
+            height="430"
+            src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"
+          ></iframe>
+        </div>
+      </div>
+      <div>
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          onkeyup="sendData(this)"
+        />
 
-<%- include('../partials/footer') %>
+        <section id="q-results"></section>
+      </div>
+    </div>
+  </body>
+</html>

@@ -102,10 +102,10 @@ async function search(req, res) {
   let payload = req.body.payload.trim();
   // use RegEx to do a non-case-sensitive query
   let search = await Musician.find({
-    name: { $regex: new RegExp('^' + payload + '.*', 'i') },
+    name: { $regex: new RegExp(payload + '.*', 'i') },
   }).exec();
-  // limit search result to 5
-  search = search.slice(0, 5);
+  // limit search result to 8
+  search = search.slice(0, 8);
   res.send({ payload: search });
-  console.log(search, '<- search: search()/musicians.js/ctrler');
+  // console.log(search, '<- search: search()/musicians.js/ctrler');
 }
